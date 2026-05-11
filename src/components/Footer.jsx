@@ -40,9 +40,10 @@ export default function Footer() {
           </div>
           <div className="footer__col">
             <span className="label footer__col-title">Connect</span>
+            <a href="tel:+918264449956">📞 +91 82644 49956</a>
+            <a href="mailto:growth@zenvoralabs.xyz">✉️ growth@zenvoralabs.xyz</a>
             <a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a>
             <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="mailto:hello@zenvoralabs.com">Email</a>
           </div>
         </div>
       </div>
