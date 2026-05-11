@@ -1,0 +1,125 @@
+.announcement-bar {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background: linear-gradient(135deg, rgba(79, 125, 245, 0.08) 0%, rgba(124, 91, 245, 0.06) 100%);
+  border-bottom: 1px solid rgba(79, 125, 245, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.announcement-bar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 9px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.announcement-bar__content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.announcement-bar__badge {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--violet) 100%);
+  padding: 3px 8px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.announcement-bar__text {
+  font-family: var(--font-body);
+  font-size: 0.78125rem;
+  font-weight: 450;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.announcement-bar__divider {
+  width: 1px;
+  height: 14px;
+  background: var(--border-light);
+  flex-shrink: 0;
+}
+
+.announcement-bar__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  transition: all 0.3s var(--ease-out);
+  white-space: nowrap;
+}
+
+.announcement-bar__link:hover {
+  color: var(--accent-hover);
+  text-shadow: 0 0 12px rgba(79, 125, 245, 0.4);
+}
+
+.announcement-bar__link svg {
+  flex-shrink: 0;
+}
+
+.announcement-bar__close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  color: var(--text-tertiary);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.announcement-bar__close:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Push navbar down when announcement bar is visible */
+@media (max-width: 768px) {
+  .announcement-bar__text {
+    display: none;
+  }
+
+  .announcement-bar__divider:first-of-type {
+    display: none;
+  }
+
+  .announcement-bar__badge {
+    display: none;
+  }
+
+  .announcement-bar__content {
+    gap: 12px;
+  }
+
+  .announcement-bar__link {
+    font-size: 0.625rem;
+  }
+}
