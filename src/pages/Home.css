@@ -1,0 +1,483 @@
+/* ══════════════════════════════════════════════
+   HOME PAGE STYLES
+   ══════════════════════════════════════════════ */
+
+/* ── Hero ── */
+.hero {
+  padding: 80px 0 60px;
+  background: var(--white);
+}
+
+.hero__inner {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.hero__content {
+  flex: 1;
+}
+
+.hero__badge {
+  display: inline-block;
+  padding: 8px 16px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.hero__title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.hero__title-accent {
+  color: var(--primary);
+}
+
+.hero__subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 520px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Hero Visual */
+.hero__visual {
+  flex: 0 0 auto;
+}
+
+.hero__graphic {
+  width: 280px;
+  height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__graphic-circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid var(--primary-light);
+  animation: hero-pulse 3s ease-in-out infinite;
+}
+
+.hero__graphic-icon {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+}
+
+.hero__graphic-text {
+  font-size: 80px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.hero__graphic-text span {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+@keyframes hero-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.7; }
+}
+
+/* ── Trust Bar ── */
+.trust-bar {
+  padding: 24px 0;
+  background: var(--bg-light);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.trust-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trust-bar__icon {
+  font-size: 18px;
+}
+
+.trust-bar__text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Services Grid ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  text-align: center;
+  padding: 40px 28px;
+}
+
+.service-card__icon {
+  font-size: 40px;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  line-height: 72px;
+  background: var(--primary-light);
+  border-radius: var(--radius-md);
+}
+
+.service-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.service-card__desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.service-card__price {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.service-card__price strong {
+  color: var(--primary);
+  font-size: 16px;
+}
+
+/* ── Steps (How It Works) ── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.step-card {
+  text-align: center;
+  position: relative;
+  padding: 0 12px;
+}
+
+.step-card__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.step-card__title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.step-card__desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.step-card__connector {
+  display: none;
+}
+
+/* ── Pricing Grid ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.pricing-card {
+  padding: 36px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricing-card--popular {
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-card__badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: 100px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.pricing-card__label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.pricing-card__name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.pricing-card__price {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.pricing-card__period {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.pricing-card__desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.pricing-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.pricing-card__features li svg {
+  flex-shrink: 0;
+}
+
+/* ── Testimonials ── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.testimonial-card {
+  padding: 32px;
+}
+
+.testimonial-card__stars {
+  color: #F59E0B;
+  font-size: 16px;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+}
+
+.testimonial-card__quote {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.testimonial-card__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.testimonial-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.testimonial-card__role {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ── Final CTA ── */
+.final-cta {
+  padding: 80px 0;
+  background: var(--primary);
+  text-align: center;
+}
+
+.final-cta__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.final-cta__title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 800;
+  color: var(--white);
+}
+
+.final-cta__subtitle {
+  font-size: 17px;
+  color: rgba(255,255,255,0.8);
+  max-width: 500px;
+  margin-bottom: 16px;
+}
+
+.final-cta__phone {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 8px;
+}
+
+.final-cta__phone a {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .services-grid,
+  .pricing-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 48px 0 40px;
+  }
+
+  .hero__inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero__subtitle {
+    margin: 0 auto 32px;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__graphic {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero__graphic-text {
+    font-size: 56px;
+  }
+
+  .hero__graphic-text span {
+    font-size: 20px;
+  }
+
+  .trust-bar__inner {
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .trust-bar__text {
+    font-size: 12px;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,36 +1,38 @@
-import SmoothScroll from './components/SmoothScroll'
-import AnnouncementBar from './components/AnnouncementBar'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Services from './components/Services'
-import Process from './components/Process'
-import Results from './components/Results'
-import Showcase from './components/Showcase'
-import About from './components/About'
-import FinalCTA from './components/FinalCTA'
 import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
+import Home from './pages/Home'
+import Services from './pages/Services'
+import Portfolio from './pages/Portfolio'
+import Pricing from './pages/Pricing'
+import Contact from './pages/Contact'
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
 
 export default function App() {
   return (
-    <SmoothScroll>
-      <AnnouncementBar />
+    <>
+      <ScrollToTop />
       <Navbar />
       <main>
-        <Hero />
-        <div className="divider" />
-        <Services />
-        <div className="divider" />
-        <Process />
-        <div className="divider" />
-        <Results />
-        <div className="divider" />
-        <Showcase />
-        <div className="divider" />
-        <About />
-        <div className="divider" />
-        <FinalCTA />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </main>
       <Footer />
-    </SmoothScroll>
+      <WhatsAppButton />
+    </>
   )
 }

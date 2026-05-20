@@ -1,0 +1,55 @@
+/* ══════════════════════════════════════════════
+   PRICING PAGE — FAQ Accordion
+   ══════════════════════════════════════════════ */
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition);
+}
+
+.faq-item:hover,
+.faq-item--open {
+  border-color: var(--primary);
+}
+
+.faq-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  gap: 16px;
+}
+
+.faq-item__toggle {
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--primary);
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq-item__answer {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}

@@ -1,62 +1,44 @@
+import { Link } from 'react-router-dom'
 import './Footer.css'
+
+const WHATSAPP = 'https://wa.me/919876543210'
+const EMAIL = 'hello@zenvoralabs.xyz'
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="divider" />
-      <div className="container footer__inner">
-        <div className="footer__left">
-          <div className="navbar__logo" style={{ marginBottom: 12 }}>
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <path d="M10 0L20 10L10 20L0 10L10 0Z" fill="url(#footer-grad)" />
-              <defs>
-                <linearGradient id="footer-grad" x1="0" y1="0" x2="20" y2="20">
-                  <stop stopColor="#4f7df5" />
-                  <stop offset="1" stopColor="#7c5bf5" />
-                </linearGradient>
-              </defs>
-            </svg>
-            <span className="navbar__logo-text" style={{ fontSize: '1rem' }}>Zenvora Labs</span>
-          </div>
-          <p className="body" style={{ maxWidth: 300, fontSize: '0.8125rem' }}>
-            AI-powered growth infrastructure for companies scaling aggressively.
-          </p>
-        </div>
-
-        <div className="footer__links">
-          <div className="footer__col">
-            <span className="label footer__col-title">Company</span>
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#results">Results</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div className="footer__col">
-            <span className="label footer__col-title">Systems</span>
-            <a href="#services">AI Automation</a>
-            <a href="#services">Performance</a>
-            <a href="#services">Web Experiences</a>
-            <a href="#services">CRM & Funnels</a>
-          </div>
-          <div className="footer__col">
-            <span className="label footer__col-title">Connect</span>
-            <a href="tel:+918264449956">📞 +91 82644 49956</a>
-            <a href="mailto:growth@zenvoralabs.xyz">✉️ growth@zenvoralabs.xyz</a>
-            <a href="https://twitter.com" target="_blank" rel="noopener">Twitter / X</a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-
+    <footer className="footer" id="footer">
       <div className="container">
-        <div className="divider" style={{ marginTop: 48 }} />
+        <div className="footer__top">
+          <div className="footer__brand">
+            <div className="footer__logo">
+              <span className="footer__logo-icon">◆</span>
+              Zenvora Labs
+            </div>
+            <p className="footer__tagline">Website in 48 Hours. AI That Works For You.</p>
+            <p className="footer__serving">Serving businesses in Ludhiana, Jaipur & across India</p>
+          </div>
+
+          <div className="footer__links">
+            <div className="footer__col">
+              <h4 className="footer__col-title">Quick Links</h4>
+              <Link to="/">Home</Link>
+              <Link to="/services">Services</Link>
+              <Link to="/portfolio">Portfolio</Link>
+              <Link to="/pricing">Pricing</Link>
+              <Link to="/contact">Contact</Link>
+            </div>
+
+            <div className="footer__col">
+              <h4 className="footer__col-title">Get In Touch</h4>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+              <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              <a href="tel:+919876543210">+91 98765 43210</a>
+            </div>
+          </div>
+        </div>
+
         <div className="footer__bottom">
-          <span className="body" style={{ fontSize: '0.75rem' }}>
-            © {new Date().getFullYear()} Zenvora Labs. All rights reserved.
-          </span>
-          <span className="body" style={{ fontSize: '0.75rem' }}>
-            Engineered with precision.
-          </span>
+          <p>© {new Date().getFullYear()} Zenvora Labs. All rights reserved.</p>
         </div>
       </div>
     </footer>
