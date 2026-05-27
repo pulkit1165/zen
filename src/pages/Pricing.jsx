@@ -1,124 +1,364 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Pricing.css'
 
-const WHATSAPP = 'https://wa.me/919876543210?text=Hi!%20I%27m%20interested%20in%20your%20services.'
+const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20pricing.'
 
-const plans = [
+const currencies = [
+  { code: 'USD', symbol: '$', flag: '🇺🇸' },
+  { code: 'AUD', symbol: 'A$', flag: '🇦🇺' },
+  { code: 'CAD', symbol: 'C$', flag: '🇨🇦' },
+  { code: 'GBP', symbol: '£', flag: '🇬🇧' },
+  { code: 'INR', symbol: '₹', flag: '🇮🇳' },
+]
+
+// USD-anchored pricing. Other currencies are approximate.
+const fx = { USD: 1, AUD: 1.55, CAD: 1.4, GBP: 0.8, INR: 85 }
+
+const formatPrice = (usd, code) => {
+  const cur = currencies.find(c => c.code === code) ?? currencies[0]
+  const rate = fx[code] ?? 1
+  const value = usd * rate
+  if (code === 'INR') {
+    const rounded = Math.round(value / 1000) * 1000
+    return `${cur.symbol}${rounded.toLocaleString('en-IN')}`
+  }
+  const rounded = Math.round(value / 50) * 50
+  return `${cur.symbol}${rounded.toLocaleString('en-US')}`
+}
+
+const buildPlans = [
   {
-    name: 'Landing Page',
-    label: 'Starter',
-    price: '₹5,000',
+    name: 'Launch',
+    label: 'For new sites',
+    usd: 2400,
     period: 'one-time',
-    desc: 'For freelancers and small businesses who need a professional online presence fast.',
-    features: ['1-page website', 'Mobile responsive', 'WhatsApp contact button', 'Google Maps embed', '48-hour delivery', '1 round of revisions'],
+    desc: 'A high-converting marketing site for a focused launch — perfect for SaaS, agencies, and D2C brands.',
+    features: [
+      '4–6 page custom site',
+      'Designed in Figma, built in Next.js',
+      'Headless CMS for content edits',
+      'GA4 + GTM analytics setup',
+      'Sub-2s LCP guarantee',
+      'Multi-region deploy (Vercel/Cloudflare)',
+      '2 rounds of revisions',
+    ],
+    timeline: '2–3 weeks',
     popular: false,
   },
   {
-    name: 'Business Website',
-    label: 'Business',
-    price: '₹12,000',
+    name: 'Scale',
+    label: 'For growing brands',
+    usd: 6400,
     period: 'one-time',
-    desc: 'For growing businesses, exporters, and shops who need a complete online presence.',
-    features: ['Up to 5 pages', 'Mobile responsive', 'Contact & inquiry form', 'SEO basics setup', 'Google Analytics', '48-hour delivery', '2 rounds of revisions'],
+    desc: 'Full marketing site or web app with custom design system, integrations, and conversion optimisation baked in.',
+    features: [
+      'Up to 15 pages + design system',
+      'Custom components in Storybook',
+      'Headless commerce / CRM integrations',
+      'Server-side analytics + CAPI',
+      'A/B testing framework wired in',
+      '30 days of post-launch support',
+      'Unlimited revisions during build',
+    ],
+    timeline: '4–6 weeks',
     popular: true,
   },
   {
-    name: 'Website + AI Bot',
-    label: 'Pro',
-    price: '₹20,000',
-    period: 'one-time',
-    desc: 'Website plus a WhatsApp AI bot that handles inquiries, qualifies leads, and replies 24/7.',
-    features: ['Up to 5 pages', 'WhatsApp AI chatbot', 'Lead capture automation', 'CRM integration', '48-hour website delivery', '3 rounds of revisions', '30 days free support'],
+    name: 'Platform',
+    label: 'For full products',
+    usd: 14000,
+    period: 'starting',
+    desc: 'SaaS dashboards, web apps and internal tools. Type-safe end-to-end, with auth, payments and ops included.',
+    features: [
+      'Full-stack app (Next.js + Postgres)',
+      'Auth, payments & roles',
+      'Admin dashboards & reporting',
+      'AI features (LLMs, RAG, embeddings)',
+      'Background jobs & integrations',
+      'Observability + uptime monitoring',
+      'Quarterly architecture reviews',
+    ],
+    timeline: '6–12 weeks',
     popular: false,
   },
+]
+
+const retainerPlans = [
+  {
+    name: 'Growth',
+    label: 'Performance Marketing',
+    usd: 1800,
+    period: '/ month',
+    desc: 'Dedicated paid acquisition across 1–2 channels with creative strategy, weekly experiments and reporting.',
+    features: [
+      'Meta or Google Ads management',
+      'Creative briefs + UGC sourcing',
+      '4 paid experiments / month',
+      'Landing page CRO tests',
+      'Server-side tracking (sGTM, CAPI)',
+      'Weekly Looker Studio dashboards',
+      'Monthly strategy call',
+    ],
+    timeline: 'Live in 7–14 days',
+    popular: false,
+    note: 'Plus ad spend (managed in your account)',
+  },
+  {
+    name: 'Full-funnel',
+    label: 'Marketing + CRO',
+    usd: 3600,
+    period: '/ month',
+    desc: 'Multi-channel paid + SEO + CRO. The most popular retainer for D2C and B2B teams scaling past $30k/mo spend.',
+    features: [
+      '2–3 channels (Meta, Google, TikTok, LinkedIn)',
+      'SEO + content production',
+      '8 CRO experiments / month',
+      'Lifecycle email & retention',
+      'Custom MMM / attribution modelling',
+      'Slack channel + bi-weekly calls',
+      'Quarterly business reviews',
+    ],
+    timeline: 'Live in 14 days',
+    popular: true,
+    note: 'Plus ad spend (managed in your account)',
+  },
+  {
+    name: 'Embedded',
+    label: 'Engineering retainer',
+    usd: 4800,
+    period: '/ month',
+    desc: 'A senior engineer dedicated to your product, shipping weekly with full code ownership and on-call coverage.',
+    features: [
+      '60–80 hours of senior engineering / month',
+      'Weekly sprints + roadmap',
+      'Code reviews, CI/CD & DevOps',
+      'On-call coverage in your timezone',
+      'Slack channel + daily standups',
+      'Quarterly roadmap planning',
+      'Pauseable month-to-month',
+    ],
+    timeline: 'Start within 14 days',
+    popular: false,
+  },
+]
+
+const includedAll = [
+  'Dedicated Slack / WhatsApp channel',
+  'Weekly progress updates',
+  'Senior team only — no junior staffing',
+  'Source code & full asset ownership',
+  'Transparent reporting & docs',
+  'No commission on ad spend',
 ]
 
 const faqs = [
   {
-    q: 'What do I need to provide to get started?',
-    a: 'Just your business name, logo (or we can suggest one), photos if you have them, and a brief description of what your business does. We handle everything else.',
+    q: 'What currencies do you bill in?',
+    a: 'We bill primarily in USD, but happily invoice in AUD, CAD, GBP, EUR, AED or INR. We accept wire, card and Wise transfers.',
   },
   {
-    q: "What if I'm not happy with the design?",
-    a: "Every package includes revision rounds. If you're still not satisfied, we offer a full refund — no questions asked.",
+    q: 'Do you take commission on ad spend?',
+    a: 'No. Retainers are flat fees — your media spend stays in your account and is never marked up. We win when you grow, not when you spend more.',
   },
   {
-    q: 'Do you work with businesses outside Ludhiana and Jaipur?',
-    a: 'Yes — we work with businesses across India and internationally. Our 48-hour guarantee applies everywhere.',
+    q: 'Can we start with a project and move to a retainer?',
+    a: 'Yes — that\'s the most common path. We typically launch with a Scale or Platform build, then move into a Growth or Full-funnel retainer once you\'re live.',
   },
   {
-    q: 'What happens after the website goes live?',
-    a: 'We hand over all login credentials and files. You own everything. We also offer monthly maintenance packages if you want ongoing support.',
+    q: 'What if we need something not listed here?',
+    a: 'Custom scopes are normal. Tell us what you need on a discovery call and we\'ll come back with a fixed scope and fixed price within 48 hours.',
   },
   {
-    q: 'Can you build an eCommerce store?',
-    a: 'Yes. eCommerce projects start at ₹25,000 and take 5–7 days depending on the number of products.',
+    q: 'Do you sign NDAs and DPAs?',
+    a: 'Yes. We routinely sign NDAs, MSAs and DPAs (GDPR / CCPA compliant). Reach out and we\'ll send our standard templates.',
   },
 ]
 
 function FAQItem({ faq }) {
-  const [open, setOpen] = useState(false)
   return (
-    <div className={`faq-item ${open ? 'faq-item--open' : ''}`} onClick={() => setOpen(!open)}>
-      <div className="faq-item__question">
-        <span>{faq.q}</span>
-        <span className="faq-item__toggle">{open ? '−' : '+'}</span>
-      </div>
-      {open && <div className="faq-item__answer">{faq.a}</div>}
-    </div>
+    <details className="faq-item">
+      <summary>
+        {faq.q}
+        <span className="faq-item__icon" aria-hidden="true" />
+      </summary>
+      <p>{faq.a}</p>
+    </details>
   )
 }
 
 export default function Pricing() {
+  const [currency, setCurrency] = useState('USD')
+  const cur = useMemo(() => currencies.find(c => c.code === currency), [currency])
+
   return (
     <>
       <section className="page-hero" id="pricing-hero">
-        <div className="container">
+        <div className="page-hero__bg" aria-hidden="true">
+          <div className="page-hero__orb" />
+          <div className="page-hero__grid" />
+        </div>
+        <div className="container page-hero__inner">
           <p className="section-label">Pricing</p>
-          <h1 className="page-hero__title">Simple Pricing. No Surprises.</h1>
-          <p className="page-hero__subtitle">Pick a plan, tell us about your business, and we start building today. All prices in INR.</p>
+          <h1 className="page-hero__title">
+            Clear, fixed pricing.<br />
+            <span className="gradient-text">No agency surprises.</span>
+          </h1>
+          <p className="page-hero__subtitle">
+            Build projects are fixed-scope. Marketing retainers are flat monthly fees. Pick your currency — we'll invoice in it.
+          </p>
+
+          <div className="currency-switch" role="tablist" aria-label="Select currency">
+            {currencies.map(c => (
+              <button
+                key={c.code}
+                type="button"
+                role="tab"
+                aria-selected={currency === c.code}
+                className={`currency-switch__btn ${currency === c.code ? 'currency-switch__btn--active' : ''}`}
+                onClick={() => setCurrency(c.code)}
+              >
+                <span className="currency-switch__flag">{c.flag}</span>
+                {c.code}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="section" id="pricing-plans">
+      <section className="section" id="build-plans">
         <div className="container">
+          <div className="section-header pricing-section-header">
+            <p className="section-label">Build engagements</p>
+            <h2 className="section-title">Web &amp; product builds</h2>
+            <p className="section-subtitle">Fixed-scope, fixed-price projects. From a focused launch site to a full SaaS platform.</p>
+          </div>
+
           <div className="pricing-grid">
-            {plans.map((plan, i) => (
-              <div className={`card pricing-card ${plan.popular ? 'pricing-card--popular' : ''}`} key={i}>
-                {plan.popular && <div className="pricing-card__badge">Most Popular</div>}
+            {buildPlans.map(plan => (
+              <article className={`pricing-card ${plan.popular ? 'pricing-card--popular' : ''}`} key={plan.name}>
+                {plan.popular && <div className="pricing-card__badge">Most popular</div>}
                 <div className="pricing-card__label">{plan.label}</div>
                 <h3 className="pricing-card__name">{plan.name}</h3>
                 <div className="pricing-card__price">
-                  {plan.price} <span className="pricing-card__period">{plan.period}</span>
+                  {formatPrice(plan.usd, currency)} <span className="pricing-card__period">{plan.period}</span>
                 </div>
+                <p className="pricing-card__timeline">Timeline · {plan.timeline}</p>
                 <p className="pricing-card__desc">{plan.desc}</p>
                 <ul className="pricing-card__features">
                   {plan.features.map((f, j) => (
                     <li key={j}>
-                      <svg viewBox="0 0 20 20" width="16" height="16" fill="var(--primary)"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+                      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="4 11 8 15 16 6" />
+                      </svg>
                       {f}
                     </li>
                   ))}
                 </ul>
-                <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className={`btn ${plan.popular ? 'btn--primary' : 'btn--outline'}`} style={{width: '100%'}}>
-                  Get Started
-                </a>
-              </div>
+                <Link
+                  to="/contact"
+                  className={`btn ${plan.popular ? 'btn--gradient' : 'btn--outline'}`}
+                  style={{ width: '100%' }}
+                >
+                  Start a project
+                </Link>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section section--alt" id="faq">
+      <section className="section section--alt" id="retainer-plans">
+        <div className="container">
+          <div className="section-header pricing-section-header">
+            <p className="section-label">Retainers</p>
+            <h2 className="section-title">Growth &amp; engineering retainers</h2>
+            <p className="section-subtitle">Pay-monthly, pause anytime. Built for teams scaling steadily across multiple markets.</p>
+          </div>
+
+          <div className="pricing-grid">
+            {retainerPlans.map(plan => (
+              <article className={`pricing-card ${plan.popular ? 'pricing-card--popular' : ''}`} key={plan.name}>
+                {plan.popular && <div className="pricing-card__badge">Most popular</div>}
+                <div className="pricing-card__label">{plan.label}</div>
+                <h3 className="pricing-card__name">{plan.name}</h3>
+                <div className="pricing-card__price">
+                  {formatPrice(plan.usd, currency)} <span className="pricing-card__period">{plan.period}</span>
+                </div>
+                <p className="pricing-card__timeline">Timeline · {plan.timeline}</p>
+                <p className="pricing-card__desc">{plan.desc}</p>
+                <ul className="pricing-card__features">
+                  {plan.features.map((f, j) => (
+                    <li key={j}>
+                      <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="4 11 8 15 16 6" />
+                      </svg>
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                {plan.note && <p className="pricing-card__note">* {plan.note}</p>}
+                <Link
+                  to="/contact"
+                  className={`btn ${plan.popular ? 'btn--gradient' : 'btn--outline'}`}
+                  style={{ width: '100%' }}
+                >
+                  Start a retainer
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <div className="pricing-included">
+            <div className="pricing-included__title">
+              <span className="section-label" style={{ marginBottom: 0 }}>Included in every engagement</span>
+            </div>
+            <div className="pricing-included__grid">
+              {includedAll.map(item => (
+                <div className="pricing-included__item" key={item}>
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="4 11 8 15 16 6" />
+                  </svg>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="faq">
         <div className="container">
           <div className="section-header">
-            <p className="section-label">FAQ</p>
-            <h2 className="section-title">Frequently Asked Questions</h2>
+            <p className="section-label">Pricing FAQ</p>
+            <h2 className="section-title">Quick answers.</h2>
           </div>
-          <div className="faq-list">
+          <div className="faq-list" style={{ maxWidth: 760, margin: '0 auto' }}>
             {faqs.map((faq, i) => (
               <FAQItem key={i} faq={faq} />
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pricing-cta">
+        <div className="container">
+          <div className="pricing-cta__inner">
+            <h2 className="pricing-cta__title">Not sure which plan fits?</h2>
+            <p className="pricing-cta__subtitle">
+              Tell us about your project in 5 minutes. We'll come back with a fixed quote in {cur?.code} within 48 hours.
+            </p>
+            <div className="pricing-cta__actions">
+              <Link to="/contact" className="btn btn--gradient btn--lg btn--arrow">
+                Get a custom quote
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+              </Link>
+              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn btn--outline btn--lg">
+                Or chat on WhatsApp
+              </a>
+            </div>
           </div>
         </div>
       </section>

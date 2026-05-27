@@ -19,7 +19,7 @@ export default function AnnouncementBar() {
             <div className="announcement-bar__content">
               <span className="announcement-bar__badge">NEW</span>
               <span className="announcement-bar__text">
-                Get your free growth audit — reach out today
+                Now booking Q3 engagements — free 30-min growth audit for AU, CA, US &amp; UK brands
               </span>
               <span className="announcement-bar__divider" />
               <a href="tel:+918264449956" className="announcement-bar__link" id="announcement-phone">
