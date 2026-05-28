@@ -16,7 +16,7 @@ const services = [
 ]
 
 const budgets = ['Under $5k', '$5k – $15k', '$15k – $50k', '$50k – $150k', '$150k+', 'Monthly retainer']
-const countries = ['Australia', 'Canada', 'United States', 'United Kingdom', 'UAE', 'Singapore', 'India', 'Other']
+const countries = ['India', 'Australia', 'Canada', 'United States', 'United Kingdom', 'UAE', 'Singapore', 'Other']
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -28,43 +28,38 @@ export default function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Wire up to Formspree, Resend, or your backend.
     console.log('Form submitted:', form)
     setSubmitted(true)
   }
 
   return (
     <>
-      <section className="page-hero" id="contact-hero">
-        <div className="page-hero__bg" aria-hidden="true">
-          <div className="page-hero__orb" />
-          <div className="page-hero__grid" />
-        </div>
-        <div className="container page-hero__inner">
-          <p className="section-label">Get in touch</p>
-          <h1 className="page-hero__title">
-            Let's talk.<br />
-            <span className="gradient-text">No deck. No sales pitch.</span>
+      <section className="page-hero section--cream">
+        <div className="grid-bg" aria-hidden="true" />
+        <div className="container-content page-hero__inner">
+          <p className="type-eyebrow">Get in touch</p>
+          <h1 className="type-h1 page-hero__title">
+            Let&apos;s talk. <span className="serif-italic">No deck, no pitch.</span>
           </h1>
-          <p className="page-hero__subtitle">
-            Tell us about your project below or pick whichever channel suits you. We reply within 2 working hours during AU, US and EU business days.
+          <p className="type-body page-hero__subtitle">
+            Tell us about your project below or pick whichever channel suits you. We reply within two working hours across India, Australia, the US and the UK.
           </p>
         </div>
       </section>
 
-      <section className="section" id="contact-form-section">
-        <div className="container">
+      <section className="section section--paper">
+        <div className="container-content">
           <div className="contact-layout">
             <div className="contact-form-wrapper">
               {submitted ? (
                 <div className="contact-success">
                   <div className="contact-success__icon">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <h3>Message received.</h3>
-                  <p>One of our partners will reply within 2 working hours. Need us sooner?</p>
+                  <h3 className="type-h3">Message received.</h3>
+                  <p className="type-body">One of our partners will reply within two working hours. Need us sooner?</p>
                   <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn btn--whatsapp">
                     Chat on WhatsApp now
                   </a>
@@ -72,8 +67,8 @@ export default function Contact() {
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit} id="contact-form">
                   <div className="contact-form__head">
-                    <p className="section-label" style={{ marginBottom: 8 }}>Project brief</p>
-                    <h2 className="contact-form__title">Tell us a bit about what you're building.</h2>
+                    <p className="type-eyebrow">Project brief</p>
+                    <h2 className="type-h3 contact-form__title">Tell us a bit about <span className="serif-italic">what you&apos;re building.</span></h2>
                   </div>
 
                   <div className="contact-form__row">
@@ -83,7 +78,7 @@ export default function Contact() {
                     </div>
                     <div className="contact-form__field">
                       <label htmlFor="company">Company</label>
-                      <input type="text" id="company" name="company" value={form.company} onChange={handleChange} placeholder="Acme Pty Ltd" />
+                      <input type="text" id="company" name="company" value={form.company} onChange={handleChange} placeholder="Acme Pvt Ltd" />
                     </div>
                   </div>
 
@@ -125,20 +120,20 @@ export default function Contact() {
                     <textarea id="message" name="message" value={form.message} onChange={handleChange} rows="5" placeholder="What are you building, what's the timeline, what does success look like?" />
                   </div>
 
-                  <div className="contact-form__field contact-form__field--phone">
+                  <div className="contact-form__field">
                     <label htmlFor="phone">Phone / WhatsApp <span className="optional">(optional)</span></label>
-                    <input type="tel" id="phone" name="phone" value={form.phone} onChange={handleChange} placeholder="+1 415 555 0102" />
+                    <input type="tel" id="phone" name="phone" value={form.phone} onChange={handleChange} placeholder="+91 98765 43210" />
                   </div>
 
-                  <button type="submit" className="btn btn--gradient btn--lg btn--arrow" id="contact-submit">
+                  <button type="submit" className="btn btn-cta btn-lg btn--arrow" id="contact-submit">
                     Send project brief
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M5 12h14M13 5l7 7-7 7" />
                     </svg>
                   </button>
 
                   <p className="contact-form__legal">
-                    By submitting, you agree to our friendly privacy policy. We never share your details, and we don't add you to a marketing list.
+                    By submitting, you agree to our friendly privacy policy. We never share your details, and we don&apos;t add you to a marketing list.
                   </p>
                 </form>
               )}
@@ -151,29 +146,29 @@ export default function Contact() {
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                   </svg>
                 </div>
-                <h3>Fastest way in</h3>
-                <p>Most clients message us on WhatsApp. We typically reply within an hour.</p>
+                <h3 className="type-h4">Fastest way in</h3>
+                <p>Most clients message us on WhatsApp. We usually reply within an hour.</p>
                 <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn btn--whatsapp" style={{ width: '100%' }}>
                   WhatsApp us
                 </a>
               </div>
 
               <div className="contact-sidebar__card">
-                <h4 className="contact-sidebar__label">Email</h4>
+                <p className="type-label contact-sidebar__label">Email</p>
                 <a href={`mailto:${EMAIL}`} className="contact-sidebar__link">{EMAIL}</a>
               </div>
 
               <div className="contact-sidebar__card">
-                <h4 className="contact-sidebar__label">Phone</h4>
+                <p className="type-label contact-sidebar__label">Phone</p>
                 <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="contact-sidebar__link">{PHONE}</a>
                 <p className="contact-sidebar__note">Mon–Fri · 9am–8pm IST (covers AU / SG / IN business hours)</p>
               </div>
 
-              <div className="contact-sidebar__card contact-sidebar__card--timezones">
-                <h4 className="contact-sidebar__label">We work across</h4>
+              <div className="contact-sidebar__card">
+                <p className="type-label contact-sidebar__label">We work across</p>
                 <div className="contact-sidebar__timezones">
+                  <div><strong>Mohali</strong><span>UTC+5:30</span></div>
                   <div><strong>Sydney</strong><span>UTC+10</span></div>
-                  <div><strong>Dubai</strong><span>UTC+4</span></div>
                   <div><strong>London</strong><span>UTC+0</span></div>
                   <div><strong>New York</strong><span>UTC−5</span></div>
                 </div>

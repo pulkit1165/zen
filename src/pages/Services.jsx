@@ -3,237 +3,196 @@ import './Services.css'
 
 const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
 
-const services = [
+const categories = [
   {
-    id: 'web',
-    tag: 'Frontend',
-    title: 'Web Development',
-    tagline: 'Marketing sites and SaaS UIs that look the part — and load like it.',
-    description: 'We design and build production-grade websites in React, Next.js and Astro. Component-driven, accessible, SEO-ready, and tuned for Core Web Vitals from the first commit.',
-    includes: [
-      'Brand-led design systems (Figma → code)',
-      'Next.js / React / Astro builds',
-      'Sub-2s LCP and 95+ Lighthouse scores',
-      'Headless CMS (Sanity, Contentful, Storyblok)',
-      'Component libraries with Storybook',
-      'Animation & motion design (Framer Motion)',
-      'Responsive across every device & locale',
-      'Multi-region deploys on Vercel / Cloudflare',
-    ],
-    whoFor: 'Founders launching new products, marketing teams replatforming from WordPress / Wix, and brands that need their site to be a real growth engine.',
-    timeline: 'Landing pages 1–2 weeks · Full sites 3–6 weeks',
-    starting: 'from $2,400 USD',
-  },
-  {
-    id: 'backend',
-    tag: 'Backend',
-    title: 'Backend & API Engineering',
-    tagline: 'The systems that quietly run the business.',
-    description: 'Type-safe APIs, integrations, payment flows, dashboards and AI features — built on Node, Postgres and modern serverless. We treat reliability, observability and cost as first-class concerns.',
-    includes: [
-      'Node / TypeScript / Bun services',
-      'Postgres, Prisma, Drizzle & Supabase',
-      'Stripe, Razorpay, Paddle integrations',
-      'Auth (Clerk, Auth0, NextAuth, custom)',
-      'CRM & marketing automation integrations',
-      'AI features (LLMs, RAG, embeddings)',
-      'Background jobs, queues & cron',
-      'Logging, alerting & uptime monitoring',
-    ],
-    whoFor: 'Teams shipping internal tools, MVPs and SaaS products who need senior engineering without the cost of a full-time hire.',
-    timeline: 'MVPs 4–8 weeks · ongoing sprints retainer-based',
-    starting: 'from $4,800 USD',
-  },
-  {
-    id: 'marketing',
-    tag: 'Paid growth',
+    id: 'paid',
+    eyebrow: 'Paid media',
     title: 'Performance Marketing',
-    tagline: 'Spend that compounds — not spend that disappears.',
-    description: 'We run full-funnel acquisition on Meta, Google, TikTok and LinkedIn. Every dollar tracked. Every test documented. Every report explained — no agency hand-waving.',
-    includes: [
-      'Meta Ads (Facebook, Instagram, Reels)',
-      'Google Ads (Search, PMax, YouTube, Shopping)',
-      'TikTok, LinkedIn & Reddit campaigns',
-      'Creative strategy + UGC brief library',
-      'Landing page CRO experiments',
-      'Server-side tracking (CAPI, GA4)',
-      'Attribution & MMM modelling',
-      'Weekly reporting + live Looker dashboards',
+    blurb: 'Full-funnel paid acquisition across every channel that matters. Tracked properly. Reported honestly. Flat fee — no markup on spend.',
+    items: [
+      { num: '01', name: 'Google Ads Management', desc: 'Search, Performance Max, YouTube and Shopping — built around conversions, not impressions.' },
+      { num: '02', name: 'Meta Ads Management', desc: 'Facebook, Instagram and Reels. Creative-first strategy paired with disciplined media buying.' },
+      { num: '03', name: 'TikTok Ads', desc: 'Native creative briefs and Spark Ads for brands ready to actually live on the platform.' },
+      { num: '04', name: 'LinkedIn Ads', desc: 'Account-based demand for SaaS and services teams that care about SQLs, not leads.' },
+      { num: '05', name: 'Pinterest Ads', desc: 'Pin-led acquisition for D2C, home and lifestyle brands chasing cheaper, longer-tail reach.' },
+      { num: '06', name: 'Display & Retargeting', desc: 'Visual remarketing across Google, Meta and Criteo with proper frequency caps and audience hygiene.' },
+      { num: '07', name: 'Google Shopping', desc: 'Merchant Center, feed engineering and PMax structures that protect margins, not erode them.' },
+      { num: '08', name: 'Local Services Ads', desc: 'Pay-per-lead campaigns for home and professional services across AU, CA and the US.' },
+      { num: '09', name: 'Programmatic', desc: 'DV360 and The Trade Desk for brands ready to scale beyond the walled gardens.' },
+      { num: '10', name: 'YouTube Ads', desc: 'Video-led acquisition with scripted creative, suppression audiences and incrementality testing.' },
     ],
-    whoFor: 'D2C brands scaling beyond $20k/mo spend, B2B SaaS teams running paid demand, and local services groups expanding into new markets.',
-    timeline: 'Live in 7–14 days · monthly retainer',
-    starting: 'from $1,800 USD / month',
+  },
+  {
+    id: 'engineering',
+    eyebrow: 'Engineering',
+    title: 'Web & App Engineering',
+    blurb: 'We design and ship production-grade websites, web apps and platforms. Senior engineers, modern stacks, no template shortcuts.',
+    items: [
+      { num: '01', name: 'Marketing Sites', desc: 'High-conversion Next.js and Astro sites tuned for Core Web Vitals from the first commit.' },
+      { num: '02', name: 'SaaS Web Apps', desc: 'Type-safe full-stack apps in Next.js, TypeScript and Postgres. Auth, billing, dashboards — done right.' },
+      { num: '03', name: 'E-commerce', desc: 'Shopify Hydrogen, headless on Saleor or Medusa, and custom checkout flows that actually convert.' },
+      { num: '04', name: 'Backend & APIs', desc: 'Node, Bun and serverless backends. Type-safe APIs, payment flows, integrations and background jobs.' },
+      { num: '05', name: 'Mobile Apps', desc: 'React Native and Expo apps that share business logic with your web product. One team, two platforms.' },
+      { num: '06', name: 'AI Features', desc: 'Embeddings, RAG, LLM-powered search and chat, copilots — shipped responsibly inside real products.' },
+      { num: '07', name: 'Integrations', desc: 'Stripe, HubSpot, Salesforce, Klaviyo and custom webhooks. The plumbing your business runs on.' },
+      { num: '08', name: 'Performance', desc: 'Core Web Vitals audits, edge caching, image pipelines and bundle surgery — sites that load on slow networks.' },
+    ],
   },
   {
     id: 'seo',
-    tag: 'Search + CRO',
-    title: 'SEO & Conversion Optimisation',
-    tagline: 'Rank for what matters. Convert what arrives.',
-    description: 'Technical SEO foundations, programmatic content systems, and continuous CRO testing on what you already have. We treat your site like a product, not a brochure.',
-    includes: [
-      'Technical SEO audits & fixes',
-      'Programmatic content at scale',
-      'International SEO (hreflang, geo)',
-      'Local SEO & Google Business Profile',
-      'A/B testing (PostHog, GrowthBook, VWO)',
-      'Heatmaps & session replay analysis',
-      'Lead-form & checkout optimisation',
-      'Quarterly content & ranking roadmap',
+    eyebrow: 'Organic',
+    title: 'SEO & Content',
+    blurb: 'Compounding organic traffic — built on technical foundations, scalable content systems and the new layer of AI search.',
+    items: [
+      { num: '01', name: 'Technical SEO', desc: 'Crawl, render, schema and Core Web Vitals audits with a 90-day fix roadmap and shipped patches.' },
+      { num: '02', name: 'Programmatic SEO', desc: 'Page templates and content pipelines that scale to thousands of high-intent landing pages.' },
+      { num: '03', name: 'Local SEO & GBP', desc: 'Google Business Profile, citations and review systems for multi-location and service-area brands.' },
+      { num: '04', name: 'International SEO', desc: 'hreflang strategy, geo subfolders and language switching done without breaking equity.' },
+      { num: '05', name: 'Content Production', desc: 'Briefs, outlines and editor-led writing tied to a keyword map you can defend in a board meeting.' },
+      { num: '06', name: 'Answer Engine Optimisation', desc: 'Visibility inside ChatGPT, Perplexity, Gemini and Google AI Overviews — the new layer above search.' },
     ],
-    whoFor: 'Brands that already rank for branded terms but want compounding organic traffic + a higher conversion rate on every paid visit.',
-    timeline: 'Audit in 10 days · ongoing monthly retainer',
-    starting: 'from $1,200 USD / month',
+  },
+  {
+    id: 'creative',
+    eyebrow: 'Creative & CRO',
+    title: 'Landing Pages, Creative & CRO',
+    blurb: 'The page and the ad win or lose together. We design, build and test both — then ship the version with the math behind it.',
+    items: [
+      { num: '01', name: 'Landing Page Systems', desc: 'Modular landing page libraries so you can ship a new test page in hours, not weeks.' },
+      { num: '02', name: 'A/B Testing', desc: 'Experimentation on PostHog, GrowthBook and VWO with stat-significance you can actually trust.' },
+      { num: '03', name: 'UGC Creative', desc: 'Concept libraries, briefs and creator sourcing for ad systems that need fresh content every week.' },
+      { num: '04', name: 'Heatmaps & Replay', desc: 'Microsoft Clarity, Hotjar and PostHog session replay tied to qualitative interviews.' },
+      { num: '05', name: 'Lifecycle Email', desc: 'Klaviyo, Customer.io and HubSpot flows for retention, winback and lead nurture — written and built.' },
+      { num: '06', name: 'Checkout CRO', desc: 'Friction audits and rebuilds for the single highest-leverage page on your entire site.' },
+    ],
   },
   {
     id: 'analytics',
-    tag: 'Data',
-    title: 'Analytics & Tracking',
-    tagline: 'Trust the numbers. Then make moves with them.',
-    description: 'GA4, GTM, server-side tracking, CAPI, dashboards and lifecycle email. You\'ll know exactly what every channel, page and campaign actually earns.',
-    includes: [
-      'GA4 + GTM implementation (clean)',
-      'Server-side tracking (sGTM, CAPI)',
-      'Consent mode v2 / GDPR / CCPA',
-      'Looker Studio dashboards',
-      'CRM + revenue attribution',
-      'Klaviyo / Customer.io lifecycle setup',
-      'Marketing data warehouse (BigQuery)',
-      'Slack alerts for KPIs that matter',
+    eyebrow: 'Measurement',
+    title: 'Analytics, Tracking & Data',
+    blurb: 'Trust the numbers. Then make moves with them. GA4, server-side tracking, attribution and dashboards your CFO can read.',
+    items: [
+      { num: '01', name: 'GA4 + GTM Implementation', desc: 'Clean, documented event taxonomy. No more "why don\'t the numbers match" Slack threads.' },
+      { num: '02', name: 'Server-side Tracking', desc: 'Server GTM, Meta CAPI and TikTok Events API for accurate reporting in a post-iOS 14 world.' },
+      { num: '03', name: 'Consent Mode v2', desc: 'GDPR, CCPA and AU Privacy-compliant tracking that still gives you usable data.' },
+      { num: '04', name: 'Attribution & MMM', desc: 'First-touch, last-touch, MTA and lightweight MMM — calibrated to incrementality, not vibes.' },
+      { num: '05', name: 'Looker Dashboards', desc: 'Live dashboards pulling from GA4, paid platforms, CRM and revenue in a single view.' },
+      { num: '06', name: 'Data Warehouse', desc: 'BigQuery and dbt setups for teams who\'ve outgrown spreadsheets and need a real source of truth.' },
     ],
-    whoFor: 'Teams whose data is technically working but no one trusts the numbers — or who want a single source of truth across paid, organic and product.',
-    timeline: 'Implementation 2–4 weeks',
-    starting: 'from $1,800 USD project',
+  },
+  {
+    id: 'consulting',
+    eyebrow: 'Advisory',
+    title: 'Consulting & Training',
+    blurb: 'You have an in-house team — you just need senior eyes on the strategy. Audits, training and fractional leadership.',
+    items: [
+      { num: '01', name: 'Growth Audits', desc: 'Two-week deep dive across acquisition, CRO and analytics. Output: a prioritised 90-day playbook.' },
+      { num: '02', name: 'Team Training', desc: 'Live workshops on paid, SEO and analytics for marketing teams ready to bring work back in-house.' },
+      { num: '03', name: 'Fractional CTO / CMO', desc: 'Senior leadership a few hours a week — interviews, roadmaps, board reporting, vendor reviews.' },
+      { num: '04', name: 'Stack Review', desc: 'Independent audits of your martech, ad-tech and agency contracts. We tell you what to cut.' },
+    ],
   },
 ]
 
-const engagements = [
-  {
-    name: 'Sprint',
-    desc: 'A defined-scope build or launch — landing page, campaign overhaul, analytics implementation.',
-    bullets: ['Fixed scope & fixed price', 'Typical 1–4 weeks', 'Daily updates'],
-  },
-  {
-    name: 'Retainer',
-    desc: 'Embedded engineering or marketing partner shipping continuously, week after week.',
-    bullets: ['Senior team, dedicated hours', 'Weekly sprints + roadmap', 'Slack / WhatsApp channel'],
-  },
-  {
-    name: 'Build → Grow',
-    desc: 'We build the site, launch the funnel, run the ads and scale revenue — under one engagement.',
-    bullets: ['One team, one P&L', 'Aligned incentives', 'Best for D2C & SaaS launches'],
-  },
+const industries = [
+  { name: 'D2C & E-commerce', desc: 'Beauty, fashion, home, supplements. Build the site, run the ads, retain the buyer.', icon: '🛍️' },
+  { name: 'B2B SaaS', desc: 'Marketing sites, programmatic SEO, LinkedIn + Google demand and HubSpot scoring.', icon: '💼' },
+  { name: 'Home Services', desc: 'Plumbers, electricians, roofers — local SEO, Google LSA and conversion-tuned booking flows.', icon: '🏠' },
+  { name: 'Health & Fitness', desc: 'Studios, apps and supplements. TikTok-led acquisition, retention email and trial CRO.', icon: '🏋️' },
+  { name: 'Hospitality', desc: 'Restaurant groups, hotels and travel brands. Multilingual booking funnels and lifecycle.', icon: '🍽️' },
+  { name: 'Lead Generation', desc: 'Insurance, legal, finance, mortgages. Compliant, attributable lead funnels.', icon: '📞' },
+  { name: 'Automotive', desc: 'Dealer groups and aftermarket brands. Local + national paid and inventory feeds.', icon: '🚗' },
+  { name: 'Education', desc: 'Bootcamps, K-12 platforms and universities. Cohort funnels and lifecycle nurture.', icon: '🎓' },
 ]
 
 export default function Services() {
   return (
     <>
-      <section className="page-hero" id="services-hero">
-        <div className="page-hero__bg" aria-hidden="true">
-          <div className="page-hero__orb" />
-          <div className="page-hero__grid" />
-        </div>
-        <div className="container page-hero__inner">
-          <p className="section-label">Capabilities</p>
-          <h1 className="page-hero__title">
-            One team. End-to-end.<br />
-            <span className="gradient-text">Engineering and growth.</span>
+      <section className="page-hero section--cream">
+        <div className="grid-bg" aria-hidden="true" />
+        <div className="container-content page-hero__inner">
+          <p className="type-eyebrow">Capabilities</p>
+          <h1 className="type-h1 page-hero__title">
+            Everything we do, <span className="serif-italic">all in one place.</span>
           </h1>
-          <p className="page-hero__subtitle">
-            We build the digital products and run the marketing that grows them. Pick one capability, or have us own the full stack from code to campaigns.
+          <p className="type-body page-hero__subtitle">
+            Six practices, delivered by one senior team. Pick a single capability or have us own the full stack — from code to campaigns, with the AI workflows that tie them together.
           </p>
           <div className="page-hero__chips">
-            {services.map(s => (
-              <a key={s.id} href={`#${s.id}`} className="page-hero__chip">{s.title}</a>
+            {categories.map(c => (
+              <a key={c.id} href={`#${c.id}`} className="page-hero__chip">{c.title}</a>
             ))}
+            <a href="#industries" className="page-hero__chip">Industries</a>
           </div>
         </div>
       </section>
 
-      {services.map((service, i) => (
-        <section className={`section service-section ${i % 2 === 1 ? 'section--alt' : ''}`} key={service.id} id={service.id}>
-          <div className="container">
-            <div className="service-detail">
-              <div className="service-detail__main">
-                <span className="service-detail__tag">{service.tag}</span>
-                <h2 className="service-detail__title">{service.title}</h2>
-                <p className="service-detail__tagline">{service.tagline}</p>
-                <p className="service-detail__desc">{service.description}</p>
+      {categories.map((cat, i) => (
+        <section className={`section cat-section ${i % 2 === 1 ? 'section--paper' : 'section--cream'}`} key={cat.id} id={cat.id}>
+          <div className="container-content">
+            <div className="cat-section__header">
+              <p className="type-eyebrow">{cat.eyebrow}</p>
+              <h2 className="type-h2 cat-section__title">{cat.title}</h2>
+              <p className="type-body cat-section__blurb">{cat.blurb}</p>
+            </div>
 
-                <h3 className="service-detail__subtitle">What's included</h3>
-                <ul className="service-detail__list">
-                  {service.includes.map((item, j) => (
-                    <li key={j}>
-                      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="4 11 8 15 16 6" />
-                      </svg>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <aside className="service-detail__side">
-                <div className="service-detail__card">
-                  <h4>Who it's for</h4>
-                  <p>{service.whoFor}</p>
-                </div>
-                <div className="service-detail__card">
-                  <h4>Timeline</h4>
-                  <p>{service.timeline}</p>
-                </div>
-                <div className="service-detail__card service-detail__card--price">
-                  <h4>Starting at</h4>
-                  <p className="service-detail__price">{service.starting}</p>
-                  <span className="service-detail__price-note">USD · billed in AUD, CAD, GBP or INR on request</span>
-                </div>
-                <div className="service-detail__cta">
-                  <Link to="/contact" className="btn btn--gradient" style={{ width: '100%' }}>
-                    Book a discovery call
+            <div className={`cat-grid ${cat.items.length >= 8 ? 'cat-grid--4col' : 'cat-grid--3col'}`}>
+              {cat.items.map(item => (
+                <article className="cat-cell" key={item.num}>
+                  <div className="cat-cell__num type-label">{item.num} · Service</div>
+                  <h3 className="type-h4 cat-cell__name">{item.name}</h3>
+                  <p className="cat-cell__desc">{item.desc}</p>
+                  <Link to="/contact" className="cat-cell__link">
+                    Discuss this
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14M13 5l7 7-7 7" />
+                    </svg>
                   </Link>
-                  <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn btn--outline" style={{ width: '100%' }}>
-                    Chat on WhatsApp
-                  </a>
-                </div>
-              </aside>
+                </article>
+              ))}
             </div>
           </div>
         </section>
       ))}
 
-      {/* Engagement models */}
-      <section className="section section--dark">
-        <div className="container">
-          <div className="section-header">
-            <p className="section-label">How we engage</p>
-            <h2 className="section-title">Three ways to work with us.</h2>
-            <p className="section-subtitle">Pick the shape that fits where you are — we'll suggest the right one on our discovery call.</p>
+      {/* Industries */}
+      <section className="section section--soft" id="industries">
+        <div className="container-content">
+          <div className="industries-section__header">
+            <p className="type-eyebrow">Industries we serve</p>
+            <h2 className="type-h2 industries-section__title">
+              Verticals we already <span className="serif-italic">know cold.</span>
+            </h2>
+            <p className="type-body industries-section__blurb">
+              We&apos;ve shipped builds and growth programs across these spaces — so we know the unit economics, the platforms and the pitfalls before we start.
+            </p>
           </div>
-          <div className="engagements-grid">
-            {engagements.map((e, i) => (
-              <div className="engagement-card" key={i}>
-                <div className="engagement-card__num">0{i + 1}</div>
-                <h3 className="engagement-card__name">{e.name}</h3>
-                <p className="engagement-card__desc">{e.desc}</p>
-                <ul className="engagement-card__list">
-                  {e.bullets.map((b, j) => (
-                    <li key={j}>
-                      <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="4 11 8 15 16 6" />
-                      </svg>
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+
+          <div className="industries-grid">
+            {industries.map(ind => (
+              <div className="industry-card" key={ind.name}>
+                <span className="industry-card__icon" aria-hidden="true">{ind.icon}</span>
+                <h3 className="type-h4 industry-card__name">{ind.name}</h3>
+                <p className="industry-card__desc">{ind.desc}</p>
               </div>
             ))}
           </div>
-          <div className="engagements-cta">
-            <Link to="/contact" className="btn btn--white btn--lg btn--arrow">
-              Tell us about your project
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M13 5l7 7-7 7" />
-              </svg>
-            </Link>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section section--ink">
+        <div className="grid-bg grid-bg--full" aria-hidden="true" />
+        <div className="container-content services-cta__inner">
+          <h2 className="type-h2 services-cta__title">
+            Want one team for <span className="serif-italic">all of it?</span>
+          </h2>
+          <p className="type-body services-cta__sub">
+            Tell us about your project. We&apos;ll come back with a fixed scope and a fixed price in 48 hours — in INR, USD, AUD, CAD or GBP.
+          </p>
+          <div className="services-cta__actions">
+            <Link to="/contact" className="btn btn--cream btn-lg">Get a proposal</Link>
+            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn btn--cream-outline btn-lg">Chat on WhatsApp</a>
           </div>
         </div>
       </section>

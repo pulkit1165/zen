@@ -5,7 +5,6 @@ import './Navbar.css'
 const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
 
 const links = [
-  { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
   { to: '/portfolio', label: 'Work' },
   { to: '/pricing', label: 'Pricing' },
@@ -31,24 +30,15 @@ export default function Navbar() {
 
   return (
     <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`} id="navbar">
-      <div className="container navbar__inner">
+      <div className="container-content navbar__inner">
         <Link to="/" className="navbar__logo" onClick={() => setOpen(false)}>
-          <span className="navbar__logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="28" height="28">
-              <defs>
-                <linearGradient id="zlg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#2563EB" />
-                  <stop offset="60%" stopColor="#7C3AED" />
-                  <stop offset="100%" stopColor="#22D3EE" />
-                </linearGradient>
-              </defs>
-              <rect x="2" y="2" width="28" height="28" rx="8" fill="url(#zlg)" />
-              <path d="M10 11h12l-9 10h9" stroke="white" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+          <span className="navbar__mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="22" height="22">
+              <rect x="2" y="2" width="28" height="28" rx="6" fill="#14130F" />
+              <path d="M10 11h12l-9 10h9" stroke="#F1ECDF" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </span>
-          <span className="navbar__logo-text">
-            Zenvora <span className="navbar__logo-light">Labs</span>
-          </span>
+          <span className="navbar__name">Zenvora <span className="navbar__name-italic">Labs</span></span>
         </Link>
 
         <div className={`navbar__links ${open ? 'navbar__links--open' : ''}`}>
@@ -62,27 +52,19 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--gradient navbar__cta-mobile"
-            onClick={() => setOpen(false)}
-          >
-            Book a Discovery Call
-          </a>
+          <Link to="/contact" className="btn btn-cta navbar__cta-mobile" onClick={() => setOpen(false)}>
+            Get a proposal
+          </Link>
         </div>
 
         <div className="navbar__right">
-          <span className="navbar__region" aria-label="Serving global markets">
-            <span className="navbar__region-dot" /> AU · CA · US · UK · UAE · IN
-          </span>
-          <Link to="/contact" className="btn btn--gradient navbar__cta">
-            Book a Call
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M13 5l7 7-7 7" />
+          <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="navbar__phone">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
             </svg>
-          </Link>
+            +91 82644 49956
+          </a>
+          <Link to="/contact" className="btn btn-cta navbar__cta">Get a proposal</Link>
         </div>
 
         <button
