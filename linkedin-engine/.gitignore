@@ -1,0 +1,11 @@
+# secrets — never commit
+auth/.tokens.json
+.env
+
+# chrome scratch
+**/cdp/
+*.tmp
+
+# generated artifacts (keep specs + copy, ignore heavy renders if desired)
+# queue/**/image.png
+auth/.env

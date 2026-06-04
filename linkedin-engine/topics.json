@@ -1,0 +1,52 @@
+{
+  "brand": {
+    "name": "Zenvora Labs",
+    "domain": "zenvoralabs.xyz",
+    "handle": "Zenvora Labs",
+    "tagline": "Growth systems for ambitious brands"
+  },
+  "rotation": [
+    {
+      "key": "meta-ads",
+      "niche": "Meta Ads",
+      "angle": "Creative testing, CBO vs ABO, broad targeting, the post-iOS14 signal era"
+    },
+    {
+      "key": "google-ads",
+      "niche": "Google Ads",
+      "angle": "PMax vs Search, match types, negative keyword hygiene, profit-based bidding"
+    },
+    {
+      "key": "creative-strategy",
+      "niche": "Ad Creative",
+      "angle": "Hook rate, thumb-stop, UGC vs studio, the 3-second rule, modular creative"
+    },
+    {
+      "key": "landing-cro",
+      "niche": "Landing & CRO",
+      "angle": "Message match, above-the-fold, friction audits, mobile speed, social proof"
+    },
+    {
+      "key": "attribution",
+      "niche": "Attribution",
+      "angle": "Last-click lies, MER vs ROAS, blended metrics, post-purchase surveys, GA4 vs platform"
+    },
+    {
+      "key": "funnel-econ",
+      "niche": "Funnel Economics",
+      "angle": "CAC, LTV, payback windows, contribution margin, scaling past the break-even line"
+    },
+    {
+      "key": "retention-email",
+      "niche": "Retention",
+      "angle": "Email/SMS flows, repeat-rate, the 2nd-purchase gap, owned vs paid balance"
+    }
+  ],
+  "post_rules": {
+    "max_chars": 2800,
+    "hook_lines": "1-2 punchy lines, no fluff, no emoji spam",
+    "body": "short lines, lots of whitespace, one concrete idea, a number or contrarian take",
+    "cta": "soft CTA referencing Zenvora or inviting a reply",
+    "hashtags": "3-5 relevant, lowercase, end of post"
+  }
+}
