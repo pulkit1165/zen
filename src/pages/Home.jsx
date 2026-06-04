@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import HeroLab from './HeroLab'
 import './Home.css'
 
 const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
@@ -9,8 +10,6 @@ const stats = [
   { value: '180+', label: 'Brands shipped' },
   { value: '6', label: 'Markets covered' },
 ]
-
-const clients = ['LUMERA', 'NORTHBOUND', 'SUNSET', 'PIER 27', 'MIRA', 'HELIO', 'AURORA', 'BRIGHT', 'CASA', 'WAVE', 'ORBIT', 'GRAIN']
 
 const services = [
   {
@@ -120,47 +119,7 @@ export default function Home() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="hero section--cream" data-testid="section-hero">
-        <div className="grid-bg" aria-hidden="true" />
-        <div className="container-content hero__inner">
-          <div className="hero__content">
-            <span className="hero__pill">
-              <span className="hero__pill-dot" />
-              Now booking — Q3 engagements
-            </span>
-            <h1 className="type-h1 hero__headline">
-              Performance marketing<span className="hero__amp"> &amp; </span>AI engineering studio. <span className="serif-italic hero__italic">Elite strategy, built in India.</span>
-            </h1>
-            <p className="type-body hero__subtitle">
-              We pair senior strategists with custom AI workflows and full-stack engineering to ship growth other agencies can&apos;t — across Google, Meta, TikTok and LinkedIn, for ambitious brands at home and abroad.
-            </p>
-            <div className="hero__actions">
-              <Link to="/contact" className="btn btn-cta btn-lg btn--arrow">
-                Get a proposal
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link to="/services" className="btn btn-outline btn-lg">
-                Explore services
-              </Link>
-            </div>
-          </div>
-
-          <aside className="hero__clients" aria-hidden="true">
-            <div className="hero__clients-col">
-              {clients.slice(0, 6).map(name => (
-                <div className="hero__client" key={name}>{name}</div>
-              ))}
-            </div>
-            <div className="hero__clients-col hero__clients-col--shift">
-              {clients.slice(6, 12).map(name => (
-                <div className="hero__client" key={name}>{name}</div>
-              ))}
-            </div>
-          </aside>
-        </div>
-      </section>
+      <HeroLab />
 
       {/* ── STATS STRIP ── */}
       <section className="stats">
