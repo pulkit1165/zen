@@ -185,13 +185,13 @@ export default function Footer() {
         <div className="footer__bottom">
           <p>© {new Date().getFullYear()} Zenvora Labs. Built with care.</p>
           <div className="footer__legal">
-            <a href="#">Privacy</a>
+            <Link to="/privacy">Privacy</Link>
             <span>·</span>
-            <a href="#">Terms</a>
+            <Link to="/terms">Terms</Link>
             <span>·</span>
-            <a href="#">Cookies</a>
+            <Link to="/cookies">Cookies</Link>
             <span>·</span>
-            <a href="#">DPA</a>
+            <Link to="/dpa">DPA</Link>
           </div>
         </div>
       </div>

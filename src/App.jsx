@@ -8,6 +8,7 @@ import Services from './pages/Services'
 import Portfolio from './pages/Portfolio'
 import Pricing from './pages/Pricing'
 import Contact from './pages/Contact'
+import Legal from './pages/Legal'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -36,6 +37,10 @@ export default function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Legal slug="privacy" />} />
+          <Route path="/terms" element={<Legal slug="terms" />} />
+          <Route path="/cookies" element={<Legal slug="cookies" />} />
+          <Route path="/dpa" element={<Legal slug="dpa" />} />
         </Routes>
       </main>
       <Footer />

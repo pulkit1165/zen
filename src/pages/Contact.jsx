@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import './Contact.css'
 
 const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20discuss%20a%20project.'
@@ -133,7 +134,7 @@ export default function Contact() {
                   </button>
 
                   <p className="contact-form__legal">
-                    By submitting, you agree to our friendly privacy policy. We never share your details, and we don&apos;t add you to a marketing list.
+                    By submitting, you agree to our friendly <Link to="/privacy">privacy policy</Link>. We never share your details, and we don&apos;t add you to a marketing list.
                   </p>
                 </form>
               )}
