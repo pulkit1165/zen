@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './Services.css'
 
-const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
+const WHATSAPP = 'https://wa.me/919517744959?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
 
 const categories = [
   {

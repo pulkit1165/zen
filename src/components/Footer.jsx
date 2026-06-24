@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import './Footer.css'
 
-const WHATSAPP = 'https://wa.me/918264449956'
+const WHATSAPP = 'https://wa.me/919517744959'
 const EMAIL = 'growth@zenvoralabs.xyz'
-const PHONE = '+91 82644 49956'
+const PHONE = '+91 95177 44959'
 
 const services = [
   { to: '/services#paid', label: 'Performance Marketing' },

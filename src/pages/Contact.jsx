@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import './Contact.css'
 
-const WHATSAPP = 'https://wa.me/918264449956?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20discuss%20a%20project.'
+const WHATSAPP = 'https://wa.me/919517744959?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20discuss%20a%20project.'
 const EMAIL = 'growth@zenvoralabs.xyz'
-const PHONE = '+91 82644 49956'
+const PHONE = '+91 95177 44959'
 
 const services = [
   'New website / replatform',

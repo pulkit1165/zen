@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import './Legal.css'
 
 const EMAIL = 'growth@zenvoralabs.xyz'
-const PHONE = '+91 82644 49956'
+const PHONE = '+91 95177 44959'
 const COMPANY = 'Zenvora Labs'
 const LAST_UPDATED = 'June 4, 2026'
 
