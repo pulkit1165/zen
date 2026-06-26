@@ -262,6 +262,66 @@
   margin-top: 28px;
 }
 
+/* ── Founder reviews ── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.review-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  background: var(--white);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-lg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--charcoal-soft);
+}
+.review-card__stars { display: flex; gap: 3px; color: var(--gold); }
+.review-card__quote {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--charcoal-soft);
+}
+.review-card__author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+}
+.review-card__avatar {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.review-card__name {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--charcoal);
+  line-height: 1.25;
+}
+.review-card__meta { font-size: 12.5px; color: var(--ink-muted); margin-top: 2px; }
+
 /* ── Scroll reveal ── */
 [data-reveal] {
   opacity: 0;
@@ -277,6 +337,7 @@
 @media (max-width: 1040px) {
   .feature-grid { grid-template-columns: repeat(3, 1fr); }
   .industry-grid { grid-template-columns: repeat(3, 1fr); }
+  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 860px) {
   .ai-partner { grid-template-columns: 1fr; }
@@ -285,8 +346,16 @@
 @media (max-width: 680px) {
   .feature-grid, .feature-grid--3 { grid-template-columns: repeat(2, 1fr); }
   .industry-grid { grid-template-columns: repeat(2, 1fr); }
-  .feature-card { padding: 20px 18px; }
+  .reviews-grid { grid-template-columns: 1fr; }
 }
-@media (max-width: 420px) {
-  .feature-grid, .feature-grid--3, .industry-grid { grid-template-columns: 1fr; }
+/* Phones: keep modules in a compact 2-up grid, never a single tall column */
+@media (max-width: 480px) {
+  .feature-grid, .feature-grid--3 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .industry-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .feature-card { padding: 16px 14px; gap: 10px; }
+  .feature-card__icon { width: 38px; height: 38px; }
+  .feature-card__name { font-size: 13.5px; }
+  .feature-card__desc { font-size: 12.5px; }
+  .industry-chip { padding: 13px 12px; font-size: 13px; gap: 9px; }
+  .sol-note { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
 }

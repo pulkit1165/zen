@@ -12,6 +12,7 @@ const anchors = [
   { to: '#custom-software', label: 'Custom Software' },
   { to: '#industries', label: 'Industries' },
   { to: '#why-us', label: 'Why us' },
+  { to: '#reviews', label: 'Reviews' },
 ]
 
 const erpModules = [
@@ -109,6 +110,61 @@ const whyUs = [
   { title: 'Affordable pricing', desc: 'Enterprise capability without the enterprise invoice.', icon: 'dollar' },
   { title: 'End-to-end under one roof', desc: 'Strategy, build, AI and support from a single team.', icon: 'check' },
 ]
+
+const reviews = [
+  {
+    quote: 'The ERP put inventory, purchase and production on one screen. We finally see true stock and margins in real time — month-end is no longer a guessing game.',
+    company: 'SILVERUP Industries',
+    meta: 'Founder · Ludhiana, India',
+    initials: 'SU',
+  },
+  {
+    quote: 'They understood how a factory actually runs. Our purchase and sales cycles are tighter, and the dashboards tell us exactly where to act.',
+    company: 'Star Industries',
+    meta: 'Founder · India',
+    initials: 'SI',
+  },
+  {
+    quote: 'From raw material to dispatch, everything is tracked. The manufacturing and warehouse modules were shaped around our process — not the other way around.',
+    company: 'Ashoka Multimentals Pvt Ltd',
+    meta: 'Founder · India',
+    initials: 'AM',
+  },
+  {
+    quote: 'They built our booking and operations platform end to end — fast, reliable and as premium as the service we deliver. Exactly what we needed to scale across Melbourne.',
+    company: 'TransfersX',
+    meta: "Founder · Melbourne's premium chauffeur service",
+    initials: 'TX',
+  },
+  {
+    quote: 'The AI reporting changed our weekly reviews. We ask a question and get the answer with the report attached — no more digging through spreadsheets.',
+    company: 'Skysun Industries',
+    meta: 'Founder · India',
+    initials: 'SK',
+  },
+  {
+    quote: 'Custom software built around our workflow. Bookings, inventory and customer records finally live in one place — it just works.',
+    company: 'Naarm Auto Haus',
+    meta: 'Founder · Melbourne, Australia',
+    initials: 'NA',
+  },
+  {
+    quote: 'A genuine technology partner — sharp, responsive, and they ship. The AI workflows we added save our team hours every week.',
+    company: 'Digital Sauce',
+    meta: 'Founder · Melbourne, Australia',
+    initials: 'DS',
+  },
+]
+
+const Stars = () => (
+  <span className="review-card__stars" aria-label="Rated 5 out of 5">
+    {[0, 1, 2, 3, 4].map((i) => (
+      <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" />
+      </svg>
+    ))}
+  </span>
+)
 
 export default function Solutions() {
   const reveal = useReveal()
@@ -287,6 +343,33 @@ export default function Solutions() {
                   <div className="why-item__desc">{w.desc}</div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOUNDER REVIEWS ── */}
+      <section className="section section--paper" id="reviews">
+        <div className="container-content">
+          <div className="sol-head sol-head--center" data-reveal>
+            <p className="type-eyebrow">Trusted by founders</p>
+            <h2 className="type-h2 sol-head__title">Results founders <span className="serif-italic">vouch for.</span></h2>
+            <p className="type-body">From manufacturing floors in India to premium service brands in Melbourne.</p>
+          </div>
+
+          <div className="reviews-grid">
+            {reviews.map((r, i) => (
+              <article className="review-card" key={r.company} data-reveal style={{ transitionDelay: `${(i % 3) * 60}ms` }}>
+                <Stars />
+                <p className="review-card__quote">{r.quote}</p>
+                <div className="review-card__author">
+                  <span className="review-card__avatar" aria-hidden="true">{r.initials}</span>
+                  <div>
+                    <div className="review-card__name">{r.company}</div>
+                    <div className="review-card__meta">{r.meta}</div>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
         </div>
