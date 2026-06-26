@@ -126,7 +126,7 @@ const reviews = [
   },
   {
     quote: 'From raw material to dispatch, everything is tracked. The manufacturing and warehouse modules were shaped around our process — not the other way around.',
-    company: 'Ashoka Multimentals Pvt Ltd',
+    company: 'Ashoka Multimetals Pvt Ltd',
     meta: 'Founder · India',
     initials: 'AM',
   },
