@@ -6,12 +6,13 @@ const EMAIL = 'growth@zenvoralabs.xyz'
 const PHONE = '+91 95177 44959'
 
 const services = [
+  { to: '/solutions#erp', label: 'AI-powered ERP' },
+  { to: '/solutions#ai', label: 'AI Solutions' },
+  { to: '/solutions#custom-software', label: 'Custom Software' },
   { to: '/services#paid', label: 'Performance Marketing' },
   { to: '/services#engineering', label: 'Web & App Engineering' },
   { to: '/services#seo', label: 'SEO & Content' },
-  { to: '/services#creative', label: 'Landing Pages & CRO' },
   { to: '/services#analytics', label: 'Analytics & Tracking' },
-  { to: '/services#consulting', label: 'Consulting & Training' },
 ]
 
 const industries = [
@@ -24,6 +25,7 @@ const industries = [
 ]
 
 const company = [
+  { to: '/about', label: 'About Us' },
   { to: '/portfolio', label: 'Case Studies' },
   { to: '/pricing', label: 'Pricing' },
   { to: '/contact', label: 'Contact' },
