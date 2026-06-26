@@ -156,6 +156,16 @@ const reviews = [
   },
 ]
 
+const clientNames = [
+  'SILVERUP Industries',
+  'Star Industries',
+  'Ashoka Multimetals',
+  'TransfersX',
+  'Skysun Industries',
+  'Naarm Auto Haus',
+  'Digital Sauce',
+]
+
 const Stars = () => (
   <span className="review-card__stars" aria-label="Rated 5 out of 5">
     {[0, 1, 2, 3, 4].map((i) => (
@@ -213,6 +223,22 @@ export default function Solutions() {
           </nav>
         </div>
       </section>
+
+      {/* ── CLIENTS BAR ── */}
+      <div className="clients-bar">
+        <div className="container-content clients-bar__label-wrap">
+          <span className="type-label clients-bar__label">Clients we&apos;ve worked with</span>
+        </div>
+        <div className="clients-bar__viewport">
+          <div className="clients-bar__track">
+            {[...clientNames, ...clientNames].map((c, i) => (
+              <span className="clients-bar__item" key={i}>
+                {c}<span className="clients-bar__sep" aria-hidden="true">/</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* ── ERP ── */}
       <section className="section section--paper" id="erp">
@@ -326,28 +352,6 @@ export default function Solutions() {
         </div>
       </section>
 
-      {/* ── WHY CHOOSE US ── */}
-      <section className="section section--ink" id="why-us">
-        <div className="grid-bg grid-bg--full" aria-hidden="true" />
-        <div className="container-content">
-          <div className="sol-head" data-reveal>
-            <p className="type-eyebrow">Why choose us</p>
-            <h2 className="type-h2 sol-head__title">A trusted technology partner — <span className="serif-italic">not just another vendor.</span></h2>
-          </div>
-          <div className="why-grid">
-            {whyUs.map((w, i) => (
-              <div className="why-item" key={w.title} data-reveal style={{ transitionDelay: `${(i % 6) * 45}ms` }}>
-                <span className="why-item__icon"><Icon name={w.icon} size={20} /></span>
-                <div>
-                  <div className="why-item__title">{w.title}</div>
-                  <div className="why-item__desc">{w.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── FOUNDER REVIEWS ── */}
       <section className="section section--paper" id="reviews">
         <div className="container-content">
@@ -370,6 +374,28 @@ export default function Solutions() {
                   </div>
                 </div>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY CHOOSE US ── */}
+      <section className="section section--ink" id="why-us">
+        <div className="grid-bg grid-bg--full" aria-hidden="true" />
+        <div className="container-content">
+          <div className="sol-head" data-reveal>
+            <p className="type-eyebrow">Why choose us</p>
+            <h2 className="type-h2 sol-head__title">A trusted technology partner — <span className="serif-italic">not just another vendor.</span></h2>
+          </div>
+          <div className="why-grid">
+            {whyUs.map((w, i) => (
+              <div className="why-item" key={w.title} data-reveal style={{ transitionDelay: `${(i % 6) * 45}ms` }}>
+                <span className="why-item__icon"><Icon name={w.icon} size={20} /></span>
+                <div>
+                  <div className="why-item__title">{w.title}</div>
+                  <div className="why-item__desc">{w.desc}</div>
+                </div>
+              </div>
             ))}
           </div>
         </div>

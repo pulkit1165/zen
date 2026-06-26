@@ -262,6 +262,48 @@
   margin-top: 28px;
 }
 
+/* ── Clients horizontal bar ── */
+.clients-bar {
+  background: var(--cream-deep);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 24px 0;
+  overflow: hidden;
+}
+.clients-bar__label-wrap { margin-bottom: 16px; }
+.clients-bar__label { color: var(--ink-faint); }
+.clients-bar__viewport {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.clients-bar__track {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 32s linear infinite;
+}
+.clients-bar:hover .clients-bar__track { animation-play-state: paused; }
+.clients-bar__item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(18px, 2.4vw, 27px);
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+.clients-bar__sep {
+  margin: 0 26px;
+  color: var(--ink-faint);
+  font-weight: 300;
+}
+@media (prefers-reduced-motion: reduce) {
+  .clients-bar__track { animation: none; flex-wrap: wrap; white-space: normal; }
+  .clients-bar__viewport { -webkit-mask-image: none; mask-image: none; }
+}
+
 /* ── Founder reviews ── */
 .reviews-grid {
   display: grid;
