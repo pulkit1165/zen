@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -26,10 +26,26 @@ function ScrollToTop() {
   return null
 }
 
+function PixelPageView() {
+  const { pathname } = useLocation()
+  const isFirstRender = useRef(true)
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView')
+    }
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <>
       <ScrollToTop />
+      <PixelPageView />
       <Navbar />
       <main>
         <Routes>
