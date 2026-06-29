@@ -6,7 +6,7 @@ const EMAIL = 'growth@zenvoralabs.xyz'
 const PHONE = '+91 95177 44959'
 
 const services = [
-  { to: '/solutions#erp', label: 'AI-powered ERP' },
+  { to: '/erp', label: 'AI-powered ERP' },
   { to: '/solutions#ai', label: 'AI Solutions' },
   { to: '/solutions#custom-software', label: 'Custom Software' },
   { to: '/services#paid', label: 'Performance Marketing' },

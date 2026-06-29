@@ -12,6 +12,7 @@ import Legal from './pages/Legal'
 import HeroLab from './pages/HeroLab'
 import Solutions from './pages/Solutions'
 import About from './pages/About'
+import ERP from './pages/ERP'
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation()
@@ -38,6 +39,7 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
           <Route path="/solutions" element={<Solutions />} />
+          <Route path="/erp" element={<ERP />} />
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/pricing" element={<Pricing />} />

@@ -265,6 +265,13 @@ export default function Solutions() {
             <span className="sol-note__icon"><Icon name="sliders" size={20} /></span>
             <p><strong>Fully customizable.</strong> Every module is tailored to your business requirements — add, remove or reshape workflows to match exactly how you operate.</p>
           </div>
+
+          <div style={{ marginTop: '28px' }} data-reveal>
+            <Link to="/erp" className="btn btn-cta btn-lg btn--arrow">
+              Explore the full ERP platform
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
+            </Link>
+          </div>
         </div>
       </section>
 

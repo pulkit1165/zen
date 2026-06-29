@@ -6,6 +6,7 @@ const WHATSAPP = 'https://wa.me/919517744959?text=Hi%20Zenvora%20Labs%2C%20I%27d
 
 const links = [
   { to: '/solutions', label: 'Solutions' },
+  { to: '/erp', label: 'ERP' },
   { to: '/services', label: 'Services' },
   { to: '/portfolio', label: 'Work' },
   { to: '/about', label: 'About' },
