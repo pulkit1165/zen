@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom'
+import { SHOW_MARKETING } from '../config'
 import './Footer.css'
 
 const WHATSAPP = 'https://wa.me/919517744959'
 const EMAIL = 'growth@zenvoralabs.xyz'
 const PHONE = '+91 95177 44959'
 
-const services = [
+const services = SHOW_MARKETING ? [
   { to: '/erp', label: 'AI-powered ERP' },
   { to: '/solutions#ai', label: 'AI Solutions' },
   { to: '/solutions#custom-software', label: 'Custom Software' },
@@ -13,21 +14,41 @@ const services = [
   { to: '/services#engineering', label: 'Web & App Engineering' },
   { to: '/services#seo', label: 'SEO & Content' },
   { to: '/services#analytics', label: 'Analytics & Tracking' },
+] : [
+  { to: '/erp', label: 'AI-powered ERP' },
+  { to: '/solutions#ai', label: 'AI Solutions' },
+  { to: '/solutions#custom-software', label: 'Custom Software' },
+  { to: '/solutions#erp', label: 'ERP Modules' },
+  { to: '/erp#packages', label: 'ERP Packages' },
+  { to: '/solutions#industries', label: 'Industries' },
 ]
 
-const industries = [
+const industries = SHOW_MARKETING ? [
   { to: '/services#industries', label: 'D2C & E-commerce' },
   { to: '/services#industries', label: 'B2B SaaS' },
   { to: '/services#industries', label: 'Home Services' },
   { to: '/services#industries', label: 'Health & Fitness' },
   { to: '/services#industries', label: 'Hospitality' },
   { to: '/services#industries', label: 'Lead Generation' },
+] : [
+  { to: '/solutions#industries', label: 'Manufacturing' },
+  { to: '/solutions#industries', label: 'Retail & E-commerce' },
+  { to: '/solutions#industries', label: 'Logistics & Distribution' },
+  { to: '/solutions#industries', label: 'Healthcare' },
+  { to: '/solutions#industries', label: 'Real Estate' },
+  { to: '/solutions#industries', label: 'Service Businesses' },
 ]
 
-const company = [
+const company = SHOW_MARKETING ? [
   { to: '/about', label: 'About Us' },
   { to: '/portfolio', label: 'Case Studies' },
   { to: '/pricing', label: 'Pricing' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/contact', label: 'Careers' },
+] : [
+  { to: '/about', label: 'About Us' },
+  { to: '/erp', label: 'ERP Platform' },
+  { to: '/solutions', label: 'Solutions' },
   { to: '/contact', label: 'Contact' },
   { to: '/contact', label: 'Careers' },
 ]
@@ -111,7 +132,9 @@ export default function Footer() {
               <span>Zenvora <span className="footer__logo-italic">Labs</span></span>
             </Link>
             <p className="footer__tagline">
-              Performance marketing and AI engineering for ambitious brands. Built in India, shipped worldwide.
+              {SHOW_MARKETING
+                ? 'Performance marketing and AI engineering for ambitious brands. Built in India, shipped worldwide.'
+                : 'Custom software, AI and ERP systems for ambitious businesses. Built in India, shipped worldwide.'}
             </p>
 
             <div className="footer__contact">

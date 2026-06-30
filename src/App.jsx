@@ -1,5 +1,6 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { SHOW_MARKETING } from './config'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -36,13 +37,13 @@ export default function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
+          <Route path="/" element={SHOW_MARKETING ? <Home /> : <Solutions />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/erp" element={<ERP />} />
           <Route path="/about" element={<About />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/services" element={SHOW_MARKETING ? <Services /> : <Navigate to="/solutions" replace />} />
+          <Route path="/portfolio" element={SHOW_MARKETING ? <Portfolio /> : <Navigate to="/solutions" replace />} />
+          <Route path="/pricing" element={SHOW_MARKETING ? <Pricing /> : <Navigate to="/solutions" replace />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Legal slug="privacy" />} />
           <Route path="/terms" element={<Legal slug="terms" />} />

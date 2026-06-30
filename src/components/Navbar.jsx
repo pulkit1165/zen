@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { SHOW_MARKETING } from '../config'
 import './Navbar.css'
 
 const WHATSAPP = 'https://wa.me/919517744959?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
 
-const links = [
+const allLinks = [
   { to: '/solutions', label: 'Solutions' },
   { to: '/erp', label: 'ERP' },
-  { to: '/services', label: 'Services' },
-  { to: '/portfolio', label: 'Work' },
+  { to: '/services', label: 'Services', marketing: true },
+  { to: '/portfolio', label: 'Work', marketing: true },
   { to: '/about', label: 'About' },
-  { to: '/pricing', label: 'Pricing' },
+  { to: '/pricing', label: 'Pricing', marketing: true },
   { to: '/contact', label: 'Contact' },
 ]
+const links = allLinks.filter(l => SHOW_MARKETING || !l.marketing)
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
