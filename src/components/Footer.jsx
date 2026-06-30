@@ -214,6 +214,8 @@ export default function Footer() {
             <span>·</span>
             <Link to="/terms">Terms</Link>
             <span>·</span>
+            <Link to="/refund">Refund &amp; Cancellation</Link>
+            <span>·</span>
             <Link to="/cookies">Cookies</Link>
             <span>·</span>
             <Link to="/dpa">DPA</Link>

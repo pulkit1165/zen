@@ -9,6 +9,7 @@ const LAST_UPDATED = 'June 4, 2026'
 const docs = [
   { slug: 'privacy', to: '/privacy', label: 'Privacy Policy' },
   { slug: 'terms', to: '/terms', label: 'Terms of Service' },
+  { slug: 'refund', to: '/refund', label: 'Refund & Cancellation' },
   { slug: 'cookies', to: '/cookies', label: 'Cookie Policy' },
   { slug: 'dpa', to: '/dpa', label: 'Data Processing Addendum' },
 ]
@@ -314,9 +315,83 @@ function Dpa() {
   )
 }
 
+/* ─────────────────────────────  REFUND & CANCELLATION  ───────────────────────────── */
+function Refund() {
+  return (
+    <>
+      <P>
+        This policy governs refunds and cancellations for services provided by {COMPANY} (“we”, “us”,
+        “our”) to its clients (“you”, “the client”). By engaging our services or making a payment, you
+        agree to the terms set out below.
+      </P>
+      <P>
+        {COMPANY} · Ludhiana, Punjab, India · <a href={`mailto:${EMAIL}`}>{EMAIL}</a> · GSTIN: 03ANCPS3949R1ZB
+      </P>
+
+      <H>1. Nature of services</H>
+      <P>
+        {COMPANY} provides software management, consultancy and related digital services. These are
+        professional services delivered over a defined engagement period and are often customised,
+        time-bound and resource-intensive. As such, certain costs are incurred by us from the outset of
+        an engagement.
+      </P>
+
+      <H>2. Engagement &amp; payment</H>
+      <P>
+        Engagements may be billed as upfront fees, monthly retainers or milestone-based payments as
+        agreed in writing with the client. Payment confirms the client’s acceptance of the agreed scope
+        of work and of this policy.
+      </P>
+
+      <H>3. Cancellation</H>
+      <UL items={[
+        <><strong>Before work commences:</strong> If the client cancels before any work has begun or resources have been committed, the fee is refundable in full, less any non-recoverable transaction or processing charges.</>,
+        <><strong>After work commences:</strong> Once an engagement is underway, the client may cancel by providing written notice. Fees for work already completed, and for resources or third-party commitments already made, are non-refundable.</>,
+        <><strong>Ongoing retainers:</strong> Either party may terminate an ongoing engagement with written notice. The client remains responsible for fees covering the work performed up to the effective date of cancellation.</>,
+      ]} />
+
+      <H>4. Refunds</H>
+      <P>Refund eligibility is assessed based on the stage of delivery at the time of the request:</P>
+      <UL items={[
+        <><strong>Services not yet delivered:</strong> Where no work has been performed, the client is eligible for a full refund, less non-recoverable charges.</>,
+        <><strong>Services partially delivered:</strong> Where an engagement is in progress, refunds are calculated on a pro-rata basis for the undelivered portion of the agreed scope. Work already completed, deliverables already provided and committed third-party costs are non-refundable.</>,
+        <><strong>Services fully delivered:</strong> Once services have been delivered as agreed, fees are non-refundable.</>,
+      ]} />
+      <P>
+        Approved refunds are processed to the original payment method within 7–10 business days of
+        approval. Timelines for the funds to reflect in the client’s account depend on the relevant bank
+        or payment provider.
+      </P>
+
+      <H>5. Non-refundable items</H>
+      <UL items={[
+        'Work, deliverables or consultancy hours already completed.',
+        'Third-party costs or software licences already committed on the client’s behalf.',
+        'Payment gateway, bank or currency-conversion charges.',
+      ]} />
+
+      <H>6. How to request a cancellation or refund</H>
+      <P>
+        To request a cancellation or refund, contact us in writing at{' '}
+        <a href={`mailto:${EMAIL}`}>{EMAIL}</a> with the relevant invoice number and details of the
+        request. We aim to acknowledge all requests within 3 business days and to resolve them fairly and
+        promptly.
+      </P>
+
+      <H>7. Disputes</H>
+      <P>
+        We are committed to client satisfaction and will work in good faith to resolve any concerns
+        directly. Clients are encouraged to raise any issues with us before initiating a chargeback or
+        external dispute, so that we may address them quickly.
+      </P>
+    </>
+  )
+}
+
 const content = {
   privacy: { title: 'Privacy Policy', lede: 'How we collect, use and protect your data.', body: <Privacy /> },
   terms: { title: 'Terms of Service', lede: 'The terms that govern our website and our work together.', body: <Terms /> },
+  refund: { title: 'Refund & Cancellation Policy', lede: 'How cancellations and refunds work across our engagements.', updated: 'June 30, 2026', body: <Refund /> },
   cookies: { title: 'Cookie Policy', lede: 'How we use cookies and how you can control them.', body: <Cookies /> },
   dpa: { title: 'Data Processing Addendum', lede: 'How we process personal data on our clients’ behalf.', body: <Dpa /> },
 }
@@ -334,7 +409,7 @@ export default function Legal({ slug }) {
           <p className="type-eyebrow">Legal</p>
           <h1 className="type-h1 page-hero__title">{doc.title}</h1>
           <p className="type-body page-hero__subtitle">{doc.lede}</p>
-          <p className="legal__updated type-label">Last updated · {LAST_UPDATED}</p>
+          <p className="legal__updated type-label">Last updated · {doc.updated || LAST_UPDATED}</p>
         </div>
       </section>
 

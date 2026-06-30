@@ -47,6 +47,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Legal slug="privacy" />} />
           <Route path="/terms" element={<Legal slug="terms" />} />
+          <Route path="/refund" element={<Legal slug="refund" />} />
           <Route path="/cookies" element={<Legal slug="cookies" />} />
           <Route path="/dpa" element={<Legal slug="dpa" />} />
           <Route path="/lab" element={<HeroLab />} />
