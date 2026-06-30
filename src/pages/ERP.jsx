@@ -2,6 +2,7 @@ import { useEffect, useRef, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import Icon from '../components/Icons'
 import CountUp from '../components/CountUp'
+import ErpLeadForm from '../components/ErpLeadForm'
 import useReveal from '../lib/useReveal'
 import './ERP.css'
 
@@ -356,10 +357,10 @@ export default function ERP() {
               ))}
             </div>
             <div className="erp-hero__actions" data-reveal>
-              <Link to="/contact" className="btn btn-cta btn-lg btn--arrow">
+              <a href="#map-form" className="btn btn-cta btn-lg btn--arrow">
                 Map My Business System
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
-              </Link>
+              </a>
               <a href="#modules" className="btn btn-outline btn-lg">See the system</a>
             </div>
           </div>
@@ -563,11 +564,39 @@ export default function ERP() {
             repetitive parts of your business.
           </p>
           <div className="erp-cta__actions" data-reveal>
-            <Link to="/contact" className="btn btn--cream btn-lg btn--arrow">
+            <a href="#map-form" className="btn btn--cream btn-lg btn--arrow">
               Map My Business System
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M13 5l7 7-7 7" /></svg>
-            </Link>
+            </a>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn btn--cream-outline btn-lg">Chat on WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
+      {/* 11 ── MAP MY SYSTEM (LEAD FORM) ── */}
+      <section className="section section--deep erp-form-section" id="map-form">
+        <div className="grid-bg grid-bg--full" aria-hidden="true" />
+        <div className="container-content">
+          <div className="erp-form-layout">
+            <div className="erp-form-intro" data-reveal>
+              <p className="type-eyebrow">Map my business system</p>
+              <h2 className="type-h2 erp-form-intro__title">
+                Tell us how your business <span className="serif-italic">runs today.</span>
+              </h2>
+              <p className="type-body">
+                Share a few details and we’ll come back with a custom ERP map — the modules, automations and
+                AI agents that would run the repetitive parts of your operation.
+              </p>
+              <ul className="erp-form-points">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> A tailored ERP architecture for your exact workflows</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> Where AI agents replace manual, repetitive work</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg> A clear build &amp; rollout plan — no obligation</li>
+              </ul>
+              <p className="erp-form-intro__reply">We reply within one working day.</p>
+            </div>
+            <div className="erp-form-wrap" data-reveal>
+              <ErpLeadForm />
+            </div>
           </div>
         </div>
       </section>

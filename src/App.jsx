@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { SHOW_MARKETING } from './config'
+import { trackPageView } from './lib/analytics'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
@@ -27,6 +28,9 @@ function ScrollToTop() {
     }
     window.scrollTo(0, 0)
   }, [pathname, hash])
+  useEffect(() => {
+    trackPageView(pathname)
+  }, [pathname])
   return null
 }
 

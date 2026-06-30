@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { SHOW_MARKETING } from '../config'
+import Logo from './Logo'
 import './Footer.css'
 
 const WHATSAPP = 'https://wa.me/919517744959'
@@ -124,10 +125,7 @@ export default function Footer() {
           <div className="footer__brand">
             <Link to="/" className="footer__logo">
               <span className="footer__mark" aria-hidden="true">
-                <svg viewBox="0 0 32 32" width="28" height="28">
-                  <rect x="2" y="2" width="28" height="28" rx="6" fill="#F1ECDF" />
-                  <path d="M10 11h12l-9 10h9" stroke="#14130F" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <Logo size={30} />
               </span>
               <span>Zenvora <span className="footer__logo-italic">Labs</span></span>
             </Link>

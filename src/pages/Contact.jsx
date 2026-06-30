@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { trackContactForm } from '../lib/analytics'
 import './Contact.css'
 
 const WHATSAPP = 'https://wa.me/919517744959?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20discuss%20a%20project.'
@@ -30,6 +31,7 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Form submitted:', form)
+    trackContactForm(form)
     setSubmitted(true)
   }
 

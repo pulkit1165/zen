@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { SHOW_MARKETING } from '../config'
+import Logo from './Logo'
 import './Navbar.css'
 
 const WHATSAPP = 'https://wa.me/919517744959?text=Hi%20Zenvora%20Labs%2C%20I%27d%20like%20to%20talk%20about%20a%20project.'
@@ -38,10 +39,7 @@ export default function Navbar() {
       <div className="container-content navbar__inner">
         <Link to="/" className="navbar__logo" onClick={() => setOpen(false)}>
           <span className="navbar__mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="22" height="22">
-              <rect x="2" y="2" width="28" height="28" rx="6" fill="#14130F" />
-              <path d="M10 11h12l-9 10h9" stroke="#F1ECDF" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <Logo size={26} />
           </span>
           <span className="navbar__name">Zenvora <span className="navbar__name-italic">Labs</span></span>
         </Link>
