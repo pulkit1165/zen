@@ -574,7 +574,7 @@ export default function ERP() {
       </section>
 
       {/* 11 ── MAP MY SYSTEM (LEAD FORM) ── */}
-      <section className="section section--deep erp-form-section" id="map-form">
+      <section className="section section--ink erp-form-section" id="map-form">
         <div className="grid-bg grid-bg--full" aria-hidden="true" />
         <div className="container-content">
           <div className="erp-form-layout">
