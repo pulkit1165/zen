@@ -25,6 +25,7 @@ const EMPTY = {
 export default function ErpLeadForm() {
   const [form, setForm] = useState(EMPTY)
   const [status, setStatus] = useState('idle') // idle | sending | done | error
+  const [errMsg, setErrMsg] = useState('')
 
   const handleChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
 
@@ -35,6 +36,7 @@ export default function ErpLeadForm() {
     // Honeypot: a filled hidden field means a bot — pretend success, send nothing.
     if (form._gotcha) { setForm(EMPTY); setStatus('done'); return }
 
+    setErrMsg('')
     setStatus('sending')
 
     const payload = {
@@ -60,13 +62,18 @@ export default function ErpLeadForm() {
         body: JSON.stringify(payload),
       })
       const data = await res.json().catch(() => ({}))
-      if (!res.ok || !data.success) throw new Error('submit failed')
+      if (!res.ok || !data.success) {
+        setErrMsg(data.message || `HTTP ${res.status}`)
+        setStatus('error')
+        return
+      }
 
       // Google Ads conversion + Enhanced Conversions data (hashed by gtag).
       trackContactForm({ name: form.name, email: form.email, phone: form.phone })
       setForm(EMPTY)
       setStatus('done')
-    } catch {
+    } catch (err) {
+      setErrMsg(err?.message || 'Network error')
       setStatus('error')
     }
   }
@@ -156,7 +163,7 @@ export default function ErpLeadForm() {
 
       {status === 'error' && (
         <p className="erp-form__error" role="alert">
-          Something glitched on our side. Please WhatsApp us or email growth@zenvoralabs.xyz and we’ll jump on it.
+          Couldn’t send your request{errMsg ? ` (${errMsg})` : ''}. Please WhatsApp us or email growth@zenvoralabs.xyz and we’ll jump on it.
         </p>
       )}
 
