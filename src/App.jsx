@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { SHOW_MARKETING } from './config'
 import { trackPageView } from './lib/analytics'
 import Navbar from './components/Navbar'
@@ -34,10 +34,26 @@ function ScrollToTop() {
   return null
 }
 
+function PixelPageView() {
+  const { pathname } = useLocation()
+  const isFirstRender = useRef(true)
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    if (typeof window.fbq === 'function') {
+      window.fbq('track', 'PageView')
+    }
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <>
       <ScrollToTop />
+      <PixelPageView />
       <Navbar />
       <main>
         <Routes>
