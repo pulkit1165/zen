@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ERP_FORM_ENDPOINT } from '../config'
+import { WEB3FORMS_KEY } from '../config'
 import { trackContactForm } from '../lib/analytics'
 import './ErpLeadForm.css'
 
@@ -22,9 +22,6 @@ const EMPTY = {
   industry: '', teamSize: '', currentSystem: '', message: '', _gotcha: '',
 }
 
-// Only POST when a real Apps Script Web App URL is configured.
-const isConfigured = (url) => typeof url === 'string' && /^https:\/\/script\.google\.com\//.test(url)
-
 export default function ErpLeadForm() {
   const [form, setForm] = useState(EMPTY)
   const [status, setStatus] = useState('idle') // idle | sending | done | error
@@ -34,19 +31,37 @@ export default function ErpLeadForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (status === 'sending') return
+
+    // Honeypot: a filled hidden field means a bot — pretend success, send nothing.
+    if (form._gotcha) { setForm(EMPTY); setStatus('done'); return }
+
     setStatus('sending')
 
-    const payload = { ...form, source: 'ERP page' }
+    const payload = {
+      access_key: WEB3FORMS_KEY,
+      subject: `New ERP lead — ${form.business || form.name || 'Website'}`,
+      from_name: 'Zenvora ERP form',
+      name: form.name,
+      business: form.business,
+      email: form.email,
+      phone: form.phone,
+      industry: form.industry,
+      team_size: form.teamSize,
+      current_system: form.currentSystem,
+      message: form.message,
+      source: 'ERP page — zenvoralabs.xyz/erp',
+      botcheck: '',
+    }
+
     try {
-      if (isConfigured(ERP_FORM_ENDPOINT)) {
-        // no-cors: Apps Script web apps don't return CORS headers, so we fire
-        // and forget — the sheet + email are the source of truth.
-        await fetch(ERP_FORM_ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: JSON.stringify(payload),
-        })
-      }
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data.success) throw new Error('submit failed')
+
       // Google Ads conversion + Enhanced Conversions data (hashed by gtag).
       trackContactForm({ name: form.name, email: form.email, phone: form.phone })
       setForm(EMPTY)
