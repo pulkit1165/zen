@@ -73,9 +73,10 @@ export default function ErpLeadForm() {
 
   if (status === 'done') {
     return (
-      <div className="erp-form-card erp-form-card--done" data-reveal>
+      <div className="erp-form-card erp-form-card--done" role="status">
         <div className="erp-form__check" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+          <span className="erp-form__check-ring" />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
         </div>
         <h3 className="type-h3">Request received.</h3>
         <p className="type-body">
