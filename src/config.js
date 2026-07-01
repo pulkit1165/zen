@@ -23,6 +23,8 @@ export const ERP_FORM_ENDPOINT = ''
 /*
  * WEB3FORMS_KEY — access key for web3forms.com. The ERP lead form posts to
  * the Web3Forms API with this key, which emails each submission to the address
- * registered for the key (growth@zenvoralabs.xyz). No backend/deploy needed.
+ * the key is registered to (currently digitalpulkit1165@gmail.com). To change
+ * the destination, create a new key at web3forms.com under the desired inbox
+ * and swap it here. No backend/deploy needed.
  */
 export const WEB3FORMS_KEY = '11657e7d-46ee-4637-afec-035d333b9bc1'
